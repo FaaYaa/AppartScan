@@ -97,7 +97,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function _construct(){
+    public function __construct(){
         $this->createdAt = new \DateTimeImmutable();
     }
 

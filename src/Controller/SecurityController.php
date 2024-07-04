@@ -20,7 +20,7 @@ class SecurityController extends AbstractController
      * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
-    #[Route('/connexion', name: 'security.login', methods: ['GET', 'POST'])]
+    #[Route('/login', name: 'security.login', methods: ['GET', 'POST'])]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         return $this->render('pages/security/login.html.twig', [
@@ -34,7 +34,7 @@ class SecurityController extends AbstractController
      *
      * @return void
      */
-    #[Route('/deconnexion', 'security.logout')]
+    #[Route('/logout', 'security.logout')]
     public function logout()
     {
         // Nothing to do here..
@@ -47,11 +47,10 @@ class SecurityController extends AbstractController
      * @param EntityManagerInterface $manager
      * @return Response
      */
-    #[Route('/inscription', 'security.registration', methods: ['GET', 'POST'])]
+    #[Route('/registration', 'security.registration', methods: ['GET', 'POST'])]
     public function registration(Request $request, EntityManagerInterface $manager): Response
     {
         $user = new User();
-        $user->setCreatedAt(new DateTimeImmutable());
         $user->setRoles(['ROLE_USER']);
 
         $form = $this->createForm(RegistrationType::class, $user);

@@ -66,6 +66,7 @@ class RegistrationType extends AbstractType
                 ]
             ])
             ->add('plainPassword', RepeatedType::class, [
+                'invalid_message' => 'Les mots de passe ne correspondent pas.',
                 'type' => PasswordType::class,
                 'first_options' => [
                     'attr' => [
@@ -85,12 +86,14 @@ class RegistrationType extends AbstractType
                         'class' => 'form-label  mt-4'
                     ]
                 ],
-                'invalid_message' => 'Les mots de passe ne correspondent pas.'
             ])
             ->add('submit', SubmitType::class, [
+                'label' => 'Valider',
                 'attr' => [
-                    'class' => 'btn btn-primary mt-4'
-                ]
+                    'class' => 'btn btn-primary mt-4',
+                    
+                ],
+                
             ]);
     }
 
