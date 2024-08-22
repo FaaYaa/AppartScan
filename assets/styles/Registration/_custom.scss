@@ -1,0 +1,15 @@
+.registration{
+    h1{
+        text-align: center;
+    }
+
+    #registration{
+        @media screen and (min-width: 499px) {
+                width: 75%;
+            }
+        
+            @media screen and (min-width: 980px) {
+                width: 50%;
+            }
+    }
+}

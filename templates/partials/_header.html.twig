@@ -1,41 +1,77 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-	<div class="container-fluid">
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-		<div class="collapse navbar-collapse" id="navbarColor01">
-			<ul class="navbar-nav me-auto">
-				<li class="nav-item">
-					<a class="nav-link active" href="{{ path('home.index') }}">Accueil
-						<span class="visually-hidden">(current)</span>
-					</a>
-				</li>
-			</ul>
-			<div class="d-flex">
-				<ul class="navbar-nav me-auto">
-					{% if app.user %}
-						<li class="nav-item dropdown" style="margin-right: 5rem;">
-							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.fullName }}</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
-								{# <a class="dropdown-item" href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a> #}
-								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="{{ path('security.logout') }}">Déconnexion</a>
-							</div>
-						</li>
-					{% else %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('security.login') }}">Connexion
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('security.registration') }}">Inscription
-							</a>
-						</li>
-					{% endif %}
-				</ul>
+<header>
+	<nav class="AS_nav">
+		{% if foo is not defined  %}
+			<div class="nav_logo">
+				<a href="{{path('home.index')}}" class="nav_info-back">
+					<img src="logo.png" alt="">
+				</a>
 			</div>
+		{% else %}
+
+			<div class="nav_info">
+				<a href="{{path('home.index')}}" class="nav_info-back">
+					<span class="material-symbols-rounded">
+						arrow_back
+					</span>
+				</a>
+				<h1 class="nav_info-title">
+					{{foo}}
+				</h1>
+			</div>
+
+		{% endif %}
+
+
+		{# <ul class="">
+																																																																																											<li class="">
+																																																																																												<a class="" href="{{ path('home.index') }}">Accueil
+																																																																																												</a>
+																																																																																											</li>
+																																																																																										</ul> #}
+		
 		</div>
-	</div>
-</nav>
+
+		{% if app.user != null %}
+			<div class="nav_user">
+				<a href="{{path("security.logout")}}" class="nav_user-account">
+					<span class="material-symbols-rounded user">
+						logout
+					</span>
+				</a>
+			</div>
+			{% else %}
+				<div class="nav_user">
+					<a href="{{path("security.login")}}" class="nav_user-account">
+						<span class="material-symbols-rounded user">
+							account_circle
+						</span>
+					</a>
+				</div>
+		{% endif %}
+		
+		
+
+			{# <ul class="">
+																																																																																																																																		{% if app.user %}
+																																																																																																																																			<li class="">
+																																																																																																																																				<a class="" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.fullName }}</a>
+																																																																																																																																				<div class="">
+																																																																																																																																					<a class="" href="{{ path('user.edit', {id : app.user.id}) }}">Modifier mes informations</a>
+																																																																																																																																					{# <a class="" href="{{ path('user.edit.password', {id : app.user.id}) }}">Modifier mon mot de passe</a> #}
+			{#<div class=""></div>
+																																																																																																																																					<a class="" href="{{ path('security.logout') }}">Déconnexion</a>
+																																																																																																																																				</div>
+																																																																																																																																			</li>
+																																																																																																																																		{% else %}
+																																																																																																																																			<li class="">
+																																																																																																																																				<a class="" href="{{ path('security.login') }}">Connexion
+																																																																																																																																				</a>
+																																																																																																																																			</li>
+																																																																																																																																			<li class="">
+																																																																																																																																				<a class="" href="{{ path('security.registration') }}">Inscription
+																																																																																																																																				</a>
+																																																																																																																																			</li>
+																																																																																																																																		{% endif %}
+																																																																																																																																	</ul> #}
+	</nav>
+</header>

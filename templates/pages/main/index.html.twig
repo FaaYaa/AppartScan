@@ -1,16 +1,110 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Hello MainController!
+{% block title %}AppartScan
 {% endblock %}
 
 {% block body %}
 	<div class="container">
-		<h1 class="mt-4">Bienvenue sur AppartScan</h1>
+
+		<div class="containerText -title">
+			<h1>Bienvenue sur AppartScan</h1>
+			<h2>Choisissez votre appartement</h2>
+		</div>
+
+		<div class="listing">
+			<a href="{{path("appart.info")}}" class="card">
+				{# <div class="cardImg">
+
+					<img src="AppartPhoto/test.jpg" alt="">
+				</div> #}
+
+				<div class="cardText">
+					<span class="cardText-Title">
+						Appartement 1
+					</span>
+					<span class="cardText-adress">
+						16 rue des points verts
+					</span>
+				</div>
+			</a>
+			<a href="" class="card -card">
+				<div class="cardImg">
+
+					<img src="AppartPhoto/test2.jpg" alt="">
+
+				</div>
+
+				<div class="cardText">
+					<span class="cardText-Title">
+						Appartement 1
+					</span>
+					<span class="cardText-adress">
+						16 rue des points verts
+					</span>
+				</div>
+			</a>
+			<a href="" class="card -card">
+				<div class="cardImg">
+
+					<img src="AppartPhoto/test3.jpg" alt="">
+
+				</div>
+
+				<div class="cardText">
+					<span class="cardText-Title">
+						Appartement 1
+					</span>
+					<span class="cardText-adress">
+						16 rue des points verts
+					</span>
+				</div>
+			</a>
+			<a href="" class="card -card">
+				<div class="cardImg">
+
+					<img src="AppartPhoto/test.jpg" alt="">
+
+				</div>
+
+				<div class="cardText">
+					<span class="cardText-Title">
+						Appartement 1
+					</span>
+					<span class="cardText-adress">
+						16 rue des points verts
+					</span>
+				</div>
+			</a>
+
+			<a href="" class="card -card">
+				<div class="cardImg">
+
+					<img src="AppartPhoto/test4.jpg" alt="">
+
+				</div>
+
+				<div class="cardText">
+					<span class="cardText-Title">
+						Appartement 1
+					</span>
+					<span class="cardText-adress">
+						16 rue des points verts
+					</span>
+				</div>
+			</a>
+
+
+		</div>
+
+
 		{% for message in app.flashes('success') %}
 			<div class="alert alert-success mt-4">
 				{{message}}
-			</div>
-
-		{% endfor %}
+			</div>																																																																																				{% endfor %}
 	</div>
+	<a href="" class="addItems">
+		<span class="material-symbols-rounded">
+			add
+		</span>
+	</a>
+
 {% endblock %}

@@ -1,0 +1,14 @@
+.listing {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    column-gap: 15px;
+    row-gap: 15px;
+}
+
+@media screen and (min-width: 980px) {
+.listing {
+        row-gap: 20px;
+    }
+}
+

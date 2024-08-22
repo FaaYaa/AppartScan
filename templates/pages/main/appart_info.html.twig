@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% set foo = 'Liste des biens' %}
+{% block title %}AppartScan
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<div class="containerText -title">
+			<h1>Appartement 1</h1>
+			<h2>16 rue des points verts - 21000 DIJON</h2>
+        	<a href="{{path("EDL.info.principale")}}"> <button>Modifier les informations</button> </a>
+		</div>
+
+		<div class="dateEDL">
+			<h2 class="dateEDL-Title"> Date </h2>
+			<div class="dateEDLAD">
+				<div class="dateEDLAD-arr">
+					<h3>Arrivée</h3>
+					<span>31/03/1998</span>
+				</div>
+				<div class="dateEDLAD-dep">
+					<h3>Départ</h3>
+					<span>23/10/2000</span>
+				</div>
+			</div>
+		</div>
+
+		<h2 class="titleElements"> Etat des lieux</h2>
+		<div class="listing">
+			<a href="" class="card">
+				<div class="cardText">
+					<span class="cardText-Title">
+						Entrée
+					</span>
+					<span class="cardText-date">
+						31/03/1998
+					</span>
+				</div>
+			</a>
+			<a href="" class="card">
+				<div class="cardText">
+					<span class="cardText-Title">
+						Sortie
+					</span>
+				</div>
+			</a>
+	</div>
+
+{% endblock %}

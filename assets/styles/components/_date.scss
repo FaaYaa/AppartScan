@@ -1,0 +1,39 @@
+.dateEDL{
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px 0;
+
+    &:before, &:after{
+        content: "";
+        position: absolute;
+        width: 150px;
+        height: 2px;
+        background-color: white;
+        opacity: 0.5;
+    }
+
+    &:before{
+        top: 0;
+        left: calc(50% - 75px);
+    }
+
+    &:after{
+        bottom: 0;
+        left: calc(50% - 75px);
+    }
+    &-Title{
+        text-align: center;
+    }
+
+    .dateEDLAD{
+        display: flex;
+        justify-content: space-evenly;
+
+        &-arr, &-dep{
+            text-align: center;
+        }
+    }
+
+}

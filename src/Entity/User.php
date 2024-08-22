@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -11,6 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity('mail')]
+#[UniqueEntity('username')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_USERNAME', fields: ['mail'])]
 #[ORM\EntityListeners(['App\EntityListener\UserListener'])]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -22,12 +25,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
-    #[Assert\Length(min: 4, max: 50)]
+    #[Assert\Length(
+        min: 4, 
+        max: 50,  
+        minMessage:'Votre non / prenom est trop court. Il doit avoir au minimum 4 caractères.', 
+        maxMessage:'Votre non / prenom est trop long. Il doit avoir au maximum 50 caractères.', 
+        )]
     private ?string $fullName = null;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(length: 180, unique: true)]
     #[Assert\NotBlank()]
-    #[Assert\Length(min: 4, max: 50)]
+    #[Assert\Length(
+        min: 4, 
+        max: 50,  
+        minMessage:'Votre Pseudo est trop court. Il doit avoir au minimum 4 caractères.', 
+        maxMessage:'Votre Pseudo est trop long. Il doit avoir au maximum 50 caractères.', 
+        )]
     private ?string $username = null;
     
     #[ORM\Column(length: 255)]
@@ -56,6 +69,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     #[Assert\NotNull()]
     private ?\DateTimeImmutable $createdAt;
+
+    /**
+     * @var Collection<int, Location>
+     */
+    #[ORM\OneToMany(targetEntity: Location::class, mappedBy: 'user')]
+    private Collection $locations;
 
     public function getId(): ?int
     {
@@ -99,6 +118,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __construct(){
         $this->createdAt = new \DateTimeImmutable();
+        $this->locations = new ArrayCollection();
     }
 
 
@@ -188,6 +208,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Location>
+     */
+    public function getLocations(): Collection
+    {
+        return $this->locations;
+    }
+
+    public function addLocation(Location $location): static
+    {
+        if (!$this->locations->contains($location)) {
+            $this->locations->add($location);
+            $location->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLocation(Location $location): static
+    {
+        if ($this->locations->removeElement($location)) {
+            // set the owning side to null (unless already changed)
+            if ($location->getUser() === $this) {
+                $location->setUser(null);
+            }
+        }
 
         return $this;
     }

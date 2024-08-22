@@ -15,5 +15,26 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    #[Route('/appartInfo', name: 'appart.info')]
+    public function appartInfo(): Response
+    {
+        return $this->render('pages/main/appart_info.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+    #[Route('/EDLIP', name: 'EDL.info.principale')]
+    public function EDLIP(): Response
+    {
+        return $this->render('pages/main/EDL_infos_principale.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
+
+
+
+
+    
     
 }

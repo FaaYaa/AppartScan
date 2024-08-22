@@ -1,0 +1,38 @@
+header{
+    .AS_nav{
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        .nav_logo{
+            img{
+                height: 64px;
+                object-fit: cover;
+            }
+        }
+        .nav_info {
+            display: flex;
+            align-items: center;
+    
+            span {
+                background-color: $c_sub;
+                padding: 5px;
+                border-radius: 50px;
+            }
+    
+            &-back {
+                color: white;
+                height: fit-content;
+                margin-right: 5px;
+            }
+    
+            &-title {
+                font-size: 24px;
+            }
+        }
+        .nav_user{
+            .user{
+                font-size: 40px;
+            }
+        }
+    }
+}

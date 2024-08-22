@@ -1,7 +1,12 @@
-$black: black;
-$white: white;
+@import "vars";
+@import "base";
 
-body {
-  background: $black;
-  color: $white;
-}
+@import "components/cards";
+@import "components/listing";
+@import "components/date";
+@import "components/form";
+
+@import "Header/custom";
+@import "Footer/custom";
+@import "Login/custom";
+@import "Registration/custom";

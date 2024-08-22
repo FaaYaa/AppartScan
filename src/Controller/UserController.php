@@ -49,7 +49,8 @@ class UserController extends AbstractController
                 );
     
                 return $this->redirectToRoute('home.index');
-            }else {
+            }
+            if ($form->isSubmitted() && !$form->isValid()) {
                 
                 $this->addFlash(
                     'warning',

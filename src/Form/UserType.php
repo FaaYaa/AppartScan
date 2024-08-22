@@ -22,13 +22,13 @@ class UserType extends AbstractType
         ->add('fullName', TextType::class, [
             'required' => false,
             'attr' => [
-                'class' => 'form-control',
+                'class' => '',
                 'minlenght' => '2',
                 'maxlenght' => '50',
             ],
             'label' => 'Nom / Prénom',
             'label_attr' => [
-                'class' => 'form-label  mt-4'
+                'class' => ''
             ],
             'constraints' => [
                 new Assert\NotBlank(),
@@ -37,14 +37,14 @@ class UserType extends AbstractType
         ])
         ->add('username', TextType::class, [
             'attr' => [
-                'class' => 'form-control',
+                'class' => '',
                 'minlenght' => '2',
                 'maxlenght' => '50',
             ],
             'required' => false,
             'label' => 'Pseudo (Facultatif)',
             'label_attr' => [
-                'class' => 'form-label  mt-4'
+                'class' => ''
             ],
             'constraints' => [
                 new Assert\Length(['min' => 2, 'max' => 50])
@@ -52,17 +52,17 @@ class UserType extends AbstractType
         ])
         ->add('plainPassword', PasswordType::class, [
             'attr' => [
-                'class' => 'form-control'
+                'class' => ''
             ],
             'label' => 'Mot de passe',
             'label_attr' => [
-                'class' => 'form-label  mt-4'
+                'class' => ''
             ]
         ])
         ->add('submit', SubmitType::class, [
             'label' => 'Valider',
             'attr' => [
-                'class' => 'btn btn-primary mt-4',
+                'class' => '',
             ],
             
         ]);

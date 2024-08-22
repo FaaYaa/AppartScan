@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% set foo = 'AppartName' %}
+{% block title %}AppartScan
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<div class="containerText -title">
+			<h1>TEUB 1</h1>
+			<h2>16 rue des points verts - 21000 DIJON</h2>
+		</div>
+        <button>Modifier les informations</button>
+		<div class="listing">
+			<a href="" class="card">
+				<div class="cardText">
+					<span class="cardText-Title">
+						Appartement 1
+					</span>
+					<span class="cardText-adress">
+						16 rue des points verts
+					</span>
+				</div>
+			</a>
+	</div>
+
+{% endblock %}

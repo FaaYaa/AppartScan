@@ -1,14 +1,14 @@
 {% extends "base.html.twig" %}
+{% set foo = 'Inscription' %}
 
 {% block title %}
 	AppartScan - Inscription
 {% endblock %}
 
 {% block body %}
-	<div class="container">
-		<h1 class="mt-4">Formulaire d'inscription</h1>
-
+	<div class="container registration">
+		<h1>Inscription</h1>
 		{{ form(form) }}
 
-		</div>
-	{% endblock %}
+	</div>
+{% endblock %}

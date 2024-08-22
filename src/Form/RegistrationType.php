@@ -21,43 +21,33 @@ class RegistrationType extends AbstractType
         $builder
             ->add('fullName', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control',
                     'minlenght' => '2',
                     'maxlenght' => '50',
                 ],
                 'label' => 'Nom / Prénom',
-                'label_attr' => [
-                    'class' => 'form-label  mt-4'
-                ],
                 'constraints' => [
                     new Assert\NotBlank(),
-                    new Assert\Length(['min' => 2, 'max' => 50])
                 ]
             ])
             ->add('username', TextType::class, [
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => '',
                     'minlenght' => '2',
                     'maxlenght' => '50',
                 ],
                 'required' => false,
                 'label' => 'Pseudo (Facultatif)',
-                'label_attr' => [
-                    'class' => 'form-label  mt-4'
-                ],
                 'constraints' => [
-                    new Assert\Length(['min' => 2, 'max' => 50])
                 ]
             ])
             ->add('mail', EmailType::class, [
                 'attr' => [
-                    'class' => 'form-control',
                     'minlenght' => '2',
                     'maxlenght' => '180',
                 ],
                 'label' => 'Adresse email',
                 'label_attr' => [
-                    'class' => 'form-label  mt-4'
+                    'class' => ''
                 ],
                 'constraints' => [
                     new Assert\NotBlank(),
@@ -70,27 +60,27 @@ class RegistrationType extends AbstractType
                 'type' => PasswordType::class,
                 'first_options' => [
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => ''
                     ],
                     'label' => 'Mot de passe',
                     'label_attr' => [
-                        'class' => 'form-label  mt-4'
+                        'class' => ''
                     ]
                 ],
                 'second_options' => [
                     'attr' => [
-                        'class' => 'form-control'
+                        'class' => ''
                     ],
                     'label' => 'Confirmation du mot de passe',
                     'label_attr' => [
-                        'class' => 'form-label  mt-4'
+                        'class' => ''
                     ]
                 ],
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Valider',
+                'label' => 'S\'inscrire',
                 'attr' => [
-                    'class' => 'btn btn-primary mt-4',
+                    'class' => '',
                     
                 ],
                 
