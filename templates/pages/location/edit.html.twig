@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Édition d'une location
+{% endblock %}
+
+{% block body %}
+
+	<div class="example-wrapper">
+		<div class="form-horizontal">
+			<h1>Édition d'une location ✅</h1>
+			<form method="post" action="{{ path('app_location_edit', {id: location.id}) }}" enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="nom">Nom de la location</label>
+					<input type="text" class="form-control" id="nom" name="nom" value="{{ location.nom }}">
+				</div>
+				<div class="form-group">
+					<label for="adresse">Adresse de la location</label>
+					<input type="text" class="form-control" id="adresse" name="adresse" value="{{ location.adresse }}">
+				</div>
+				<div class="form-group">
+					<label for="image">Image de la location</label>
+					<input type="file" class="form-control" id="image" name="image" onchange="previewImage(this);">
+					<div id="imagePreview">
+						<img src="{{ asset('/' ~ location.image) }}" alt="Image actuelle">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="NbreRadiateur">Nombre de radiateurs</label>
+					<input type="number" class="form-control" id="NbreRadiateur" name="NbreRadiateur" value="{{ location.NbreRadiateur }}">
+				</div>
+				<div class="form-group">
+					<label for="Chaudiere">Chaudière</label>
+					<input type="checkbox" class="form-control" id="Chaudiere" name="Chaudiere" {{ location.Chaudiere ? 'checked' : '' }}>
+				</div>
+				<div class="form-group">
+					<label for="ChauffeEau">Chauffe-eau</label>
+					<input type="checkbox" class="form-control" id="ChauffeEau" name="ChauffeEau" {{ location.ChauffeEau ? 'checked' : '' }}>
+				</div>
+				<button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+			</form>
+		</div>
+	</div>
+
+{% endblock %}

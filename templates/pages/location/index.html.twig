@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+{% block title %}AppartScan
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<div class="containerText -title">
+			<h1>Bienvenue sur AppartScan</h1>
+			<h2>Choisissez votre appartement</h2>
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success mt-4">
+					{{message}}
+				</div>
+			{% endfor %}
+		</div>
+
+		<div class="listing">
+			{% for location in locations %}
+				<a href="" class="card -card">
+					<div class="cardImg">
+						<img src="{{location.image}}" alt="Pas d'image disponible">
+					</div>
+					<div class="cardText">
+						<span class="cardText-Title">
+							{{ location.nom }}
+						</span>
+						<span class="cardText-adress">
+							{{ location.adresse }}
+						</span>
+
+						<span class="cardText-eauChaudeSanitaire">
+							{% for eauChaudeSanitaire in location.eauChaudeSanitaires %}
+								{{ eauChaudeSanitaire.TypeEauChaude }}
+								{% if not loop.last %},
+								{% endif %}
+							{% endfor %}
+						</span>
+					</div>
+				</a>
+			{% endfor %}
+
+		</div>
+
+
+	</div>
+	<a href="{{path("app_location_create")}}" class="addItems">
+		<span class="material-symbols-rounded">
+			add
+		</span>
+	</a>
+
+{% endblock %}

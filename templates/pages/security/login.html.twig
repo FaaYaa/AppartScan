@@ -7,7 +7,7 @@
 		<h1>Connexion</h1>
 
 		{% if error %}
-			<div class="alert alert-danger">
+			<div class="alert alert-danger color_red">
 				{{error.messageKey|trans(error.messageData, 'security')}}
 			</div>
 		{% endif %}
@@ -40,7 +40,9 @@
 			</div>
 		</form>
 
-		<span class="" >Nouveaux sur AppartScan ? <a href="{{path("security.registration")}}" >Créer un compte</a></span>
+		<span class="">Nouveaux sur AppartScan ?
+			<a href="{{path("security.registration")}}">Créer un compte</a>
+		</span>
 
 	</div>
-	{% endblock %}
+{% endblock %}

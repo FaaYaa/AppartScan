@@ -11,11 +11,8 @@
 		</div>
 
 		<div class="listing">
-			<a href="{{path("appart.info")}}" class="card">
-				{# <div class="cardImg">
 
-					<img src="AppartPhoto/test.jpg" alt="">
-				</div> #}
+			<a href="{{path("appart.info")}}" class="card">
 
 				<div class="cardText">
 					<span class="cardText-Title">
@@ -99,7 +96,8 @@
 		{% for message in app.flashes('success') %}
 			<div class="alert alert-success mt-4">
 				{{message}}
-			</div>																																																																																				{% endfor %}
+			</div>
+		{% endfor %}
 	</div>
 	<a href="" class="addItems">
 		<span class="material-symbols-rounded">
