@@ -52,10 +52,30 @@ class Location
     #[ORM\ManyToMany(targetEntity: EauChaudeSanitaire::class, mappedBy: 'locations')]
     private Collection $eauChaudeSanitaires;
 
+    /**
+     * @var Collection<int, Cle>
+     */
+    #[ORM\OneToMany(targetEntity: Cle::class, mappedBy: 'location')]
+    private Collection $cles;
+
+    #[ORM\OneToOne(mappedBy: 'location', cascade: ['persist', 'remove'])]
+    private ?Electricite $electricite = null;
+
+    #[ORM\OneToOne(mappedBy: 'location', cascade: ['persist', 'remove'])]
+    private ?Gaz $gaz = null;
+
+    /**
+     * @var Collection<int, Piece>
+     */
+    #[ORM\OneToMany(targetEntity: Piece::class, mappedBy: 'location')]
+    private Collection $pieces;
+
     public function __construct()
     {
         $this->Chauffages = new ArrayCollection();
         $this->eauChaudeSanitaires = new ArrayCollection();
+        $this->cles = new ArrayCollection();
+        $this->pieces = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -205,6 +225,100 @@ class Location
     {
         if ($this->eauChaudeSanitaires->removeElement($eauChaudeSanitaire)) {
             $eauChaudeSanitaire->removeLocation($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Cle>
+     */
+    public function getCles(): Collection
+    {
+        return $this->cles;
+    }
+
+    public function addCle(Cle $cle): static
+    {
+        if (!$this->cles->contains($cle)) {
+            $this->cles->add($cle);
+            $cle->setLocation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCle(Cle $cle): static
+    {
+        if ($this->cles->removeElement($cle)) {
+            // set the owning side to null (unless already changed)
+            if ($cle->getLocation() === $this) {
+                $cle->setLocation(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getElectricite(): ?Electricite
+    {
+        return $this->electricite;
+    }
+
+    public function setElectricite(Electricite $electricite): static
+    {
+        // set the owning side of the relation if necessary
+        if ($electricite->getLocation() !== $this) {
+            $electricite->setLocation($this);
+        }
+
+        $this->electricite = $electricite;
+
+        return $this;
+    }
+
+    public function getGaz(): ?Gaz
+    {
+        return $this->gaz;
+    }
+
+    public function setGaz(Gaz $gaz): static
+    {
+        // set the owning side of the relation if necessary
+        if ($gaz->getLocation() !== $this) {
+            $gaz->setLocation($this);
+        }
+
+        $this->gaz = $gaz;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Piece>
+     */
+    public function getPieces(): Collection
+    {
+        return $this->pieces;
+    }
+
+    public function addPiece(Piece $piece): static
+    {
+        if (!$this->pieces->contains($piece)) {
+            $this->pieces->add($piece);
+            $piece->setLocation($this);
+        }
+
+        return $this;
+    }
+
+    public function removePiece(Piece $piece): static
+    {
+        if ($this->pieces->removeElement($piece)) {
+            // set the owning side to null (unless already changed)
+            if ($piece->getLocation() === $this) {
+                $piece->setLocation(null);
+            }
         }
 
         return $this;
